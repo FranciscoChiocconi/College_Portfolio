@@ -17,11 +17,62 @@ body {
   min-width: 100vw;
   display: none;
 }
-.burger {
-  color: white;
-}
 .hidden {
   display: none;
+  transition: none;
+}
+.menu-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+.menu-btn_burger {
+  width: 35px;
+  height: 4px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn_burger::before,
+.menu-btn_burger::after {
+  position: absolute;
+  content: "";
+  width: 35px;
+  height: 4px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+.menu-btn_burger::before {
+  transform: translateY(-12px);
+}
+.menu-btn_burger::after {
+  transform: translateY(12px);
+}
+
+.menu-btn.open .menu-btn_burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn_burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn_burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
 }
 
 .cover {
@@ -258,6 +309,7 @@ a {
   font-size: 20px;
   padding-left: 20px;
 }
+
 @media (min-width: 701px) and (max-width: 1100px) {
   .logo {
     font-size: 15px;
@@ -315,6 +367,7 @@ a {
   .about_me_text {
     font-size: 15px;
     line-height: 20px;
+    margin-left: 18px;
   }
   .projects_title {
     font-size: 40px;
